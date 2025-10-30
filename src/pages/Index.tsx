@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
 import Icon from '@/components/ui/icon';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -36,7 +34,7 @@ const Index = () => {
             <button onClick={() => scrollToSection('about')} className="text-sm hover:text-primary transition-colors">О компании</button>
             <button onClick={() => scrollToSection('services')} className="text-sm hover:text-primary transition-colors">Услуги</button>
             <button onClick={() => scrollToSection('partners')} className="text-sm hover:text-primary transition-colors">Партнеры</button>
-            <button onClick={() => scrollToSection('career')} className="text-sm hover:text-primary transition-colors">Карьера</button>
+            <Link to="/career" className="text-sm hover:text-primary transition-colors">Карьера</Link>
             <button onClick={() => scrollToSection('contacts')} className="text-sm hover:text-primary transition-colors">Контакты</button>
           </div>
 
@@ -71,9 +69,11 @@ const Index = () => {
               <Icon name="Package" className="mr-2" size={20} />
               Наши услуги
             </Button>
-            <Button size="lg" variant="outline" onClick={() => scrollToSection('career')} className="border-primary text-primary hover:bg-primary/10">
-              <Icon name="Briefcase" className="mr-2" size={20} />
-              Вакансии
+            <Button size="lg" variant="outline" asChild className="border-primary text-primary hover:bg-primary/10">
+              <Link to="/career">
+                <Icon name="Briefcase" className="mr-2" size={20} />
+                Вакансии
+              </Link>
             </Button>
           </div>
 
@@ -232,72 +232,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="career" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">Карьера</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Присоединяйтесь к команде профессионалов
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <Card className="p-8 bg-card border-border">
-              <Icon name="Heart" className="text-accent mb-4" size={40} />
-              <h3 className="text-2xl font-bold mb-4">Социальный пакет</h3>
-              <ul className="space-y-3">
-                {[
-                  'ДМС для сотрудника и семьи',
-                  'Психологическая поддержка 24/7',
-                  'Корпоративная ипотека',
-                  'Фитнес-компенсация',
-                  'Обучение и развитие',
-                  'Корпоративные мероприятия'
-                ].map((benefit, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
-                    <Icon name="CheckCircle2" className="text-accent flex-shrink-0" size={20} />
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-
-            <Card className="p-8 bg-card border-border">
-              <Icon name="Briefcase" className="text-primary mb-4" size={40} />
-              <h3 className="text-2xl font-bold mb-4">Отправить резюме</h3>
-              <form className="space-y-4" onSubmit={(e) => {
-                e.preventDefault();
-                alert('Спасибо! Ваше резюме отправлено. Мы свяжемся с вами в ближайшее время.');
-              }}>
-                <div>
-                  <Label htmlFor="name">ФИО</Label>
-                  <Input id="name" placeholder="Иванов Иван Иванович" required />
-                </div>
-                <div>
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="ivan@example.com" required />
-                </div>
-                <div>
-                  <Label htmlFor="phone">Телефон</Label>
-                  <Input id="phone" type="tel" placeholder="+7 (999) 123-45-67" required />
-                </div>
-                <div>
-                  <Label htmlFor="position">Желаемая позиция</Label>
-                  <Input id="position" placeholder="Менеджер по логистике" required />
-                </div>
-                <div>
-                  <Label htmlFor="message">О себе</Label>
-                  <Textarea id="message" placeholder="Расскажите о своем опыте..." rows={4} required />
-                </div>
-                <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <Icon name="Send" className="mr-2" size={18} />
-                  Отправить резюме
-                </Button>
-              </form>
-            </Card>
-          </div>
-        </div>
-      </section>
 
       <section id="contacts" className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4">
