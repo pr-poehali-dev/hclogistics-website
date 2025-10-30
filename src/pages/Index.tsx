@@ -155,7 +155,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 icon: 'Shield',
@@ -174,6 +174,12 @@ const Index = () => {
                 title: 'Крупные возможности',
                 description: 'Масштабируемые логистические решения для крупного бизнеса любой сложности',
                 features: ['Мультимодальность', 'Склады', 'Оптимизация', 'Аналитика']
+              },
+              {
+                icon: 'Factory',
+                title: 'Логистический аутсорсинг',
+                description: 'Полная передача логистики на аутсорс для производителей - от склада до клиента',
+                features: ['Складирование', 'Транспортировка', 'Дистрибуция', 'Управление запасами']
               }
             ].map((service, idx) => (
               <Card key={idx} className="p-8 bg-card border-border hover:border-primary/50 transition-all group">
